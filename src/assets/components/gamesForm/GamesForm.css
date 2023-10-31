@@ -1,0 +1,23 @@
+.new-game-controls{
+    border-style: solid;
+    border-radius: 10px;
+    border-width: 1px;
+    align-items: center;
+}
+
+.new-game-control{
+    margin: 10px;
+}
+
+.new-game-actions{
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-btn{
+    background-color: black;
+    width: 130px;
+    color: white;
+    border-radius: 10px;
+    margin: 5%;
+}
