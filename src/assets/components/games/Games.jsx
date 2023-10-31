@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import './Games.css'
 import GameItem from '../gameItem/GameItem'
 
 const Games = memo(({games, genreSelected}) => {
@@ -13,14 +14,12 @@ const Games = memo(({games, genreSelected}) => {
 
   return (
     <div className='games'>
-        <div className='game'>
             {gamesMapped.length > 0 ? (
                 gamesMapped
             ) : (
                 <h3>No hay videojuegos del género {genreSelected}</h3>
             )}
         </div>
-    </div>
   );
 });
 

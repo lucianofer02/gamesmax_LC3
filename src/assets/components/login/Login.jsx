@@ -10,8 +10,8 @@ const Login = () => {
     }
     return (
         <div>
-            <h1>Login</h1>
-            <button onClick={handleLogoutInDashboard}>home</button>
+            <h1>Bienvenido a Gamesmax!</h1>
+            <button onClick={handleLogoutInDashboard}>Ingresar </button>
         </div>
     )
 }

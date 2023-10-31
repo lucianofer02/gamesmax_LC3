@@ -1,4 +1,5 @@
 import React from 'react'
+import './GameFilter.css'
 
 const GameFilter = ({onGenreChange, genreSelected}) => {
     const changeGenreHandler = (event) => {
@@ -7,7 +8,7 @@ const GameFilter = ({onGenreChange, genreSelected}) => {
   return (
     <div>
         <div className='games-filter'>
-            <div className='games-filter__control'>
+            <div className='games-filter-control'>
                 <select onChange={changeGenreHandler} value={genreSelected}>
                     <option value="Todo" hidden>Género</option>
                     <option value="Aventura">Aventura</option>

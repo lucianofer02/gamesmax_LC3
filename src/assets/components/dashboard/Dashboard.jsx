@@ -1,13 +1,9 @@
-import React, { useCallback, useContext, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import Navbar from '../navbar/Navbar';
 import { Col,  Row } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
 import NewGame from '../newGame/NewGame';
 import Games from '../games/Games';
 import GameFilter from '../gameFilter/GameFilter';
-import "./Dashboard.css"
-// import Products from '../Products/Products';
-
 
 const Dashboard = () => {
     const [genreSelected, setGenreSelected] = useState("");
@@ -72,10 +68,6 @@ const Dashboard = () => {
         setGamesFiltered(gamesFiltered);
     }
 
-    // const handleLogoutInDashboard = () => {
-    //     handleLogout();
-    //     navigate("/login")
-    // }
   return (
     <>
         <Row>
@@ -84,7 +76,7 @@ const Dashboard = () => {
             </Col>
         </Row>
         <br />
-        <div className='dash'>
+        <div>
             <NewGame onGameSaved={appGameHandler}/>
             <GameFilter genreSelected={genreSelected} onGenreChange={appGenreHandler}/>
             <Games genreSelected={genreSelected} games={gamesFiltered}/>
