@@ -1,23 +1,31 @@
-import { Route, Routes, Navigate} from 'react-router-dom'
-import '../src/App.css'
-import Login from './assets/components/login/Login.jsx'
-import Dashboard from './assets/components/dashboard/Dashboard'
-import PageNotFound from './assets/components/notFound/NotFound'
-import Nosotros from './assets/components/nosotros/Nosotros'
+import { Route, Routes, useLocation, BrowserRouter } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext";
+import Login from "./assets/components/login/Login";
+import Games from "./assets/components/games/Games";
+import Dashboard from "./assets/components/dashboard/Dashboard";
+import Navbar from "./assets/components/navbar/Navbar";
+import "./App.css";
 
-const App = () => {
+function App() {
+  const location = useLocation();
+  const hideNavbar = location.pathname === "/" || location.pathname === "/login";
 
+
+  // hidenavbar se utiliza para ocultar el navbar durante el inicio de sesion para que los usuarios que no inicien sesion no puedan acceder a la app.
   return (
     <>
-    <Routes>
-      <Route path='/' element={<Navigate to="/login" replace/>} />
-      <Route path='/login' element={<Login />} />
-      <Route path='/home' element={<Dashboard />} />
-      <Route path='/*' element={<PageNotFound/>}/>
-      <Route path='/nosotros' element={<Nosotros />}/>
-    </Routes>
+      {!hideNavbar && <Navbar />} 
+      <AuthProvider>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/home" element={<Dashboard />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/games" element={<Games />} />
+        </Routes>
+      </AuthProvider>
     </>
-  )
+  );
 }
 
 export default App;
