@@ -21,3 +21,12 @@
     border-radius: 10px;
     margin: 5%;
 }
+
+.gameCreated{
+    color: green;
+    font-size: 20px;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    border-style: solid;
+}

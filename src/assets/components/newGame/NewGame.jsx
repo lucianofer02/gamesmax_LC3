@@ -1,13 +1,11 @@
 import React, { memo } from 'react'
 import Gamesform from '../gamesForm/GamesForm'
 
-const NewGame = memo(({onGameSaved}) => {
-    const saveGameHandler = (game) => {
-        onGameSaved(game);
-    }
+const NewGame = memo(() => {
+    
   return (
     <div className='new-game'>
-        <Gamesform onSaveGame={saveGameHandler}/>
+        <Gamesform />
     </div>
   )
 });

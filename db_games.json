@@ -1,0 +1,40 @@
+{
+  "games": [
+    {
+      "id": 1,
+      "title": "The Last of Us",
+      "genre": "Aventura",
+      "price": "60"
+    },
+    {
+      "id": 2,
+      "title": "God of War",
+      "genre": "Aventura",
+      "price": "60"
+    },
+    {
+      "id": 3,
+      "title": "Final Fantasy XVI",
+      "genre": "RPG",
+      "price": "70"
+    },
+    {
+      "id": 4,
+      "title": "Call of Duty WWII",
+      "genre": "FPS",
+      "price": "60"
+    },
+    {
+      "id": 5,
+      "title": "Battlefield V",
+      "genre": "FPS",
+      "price": "50"
+    },
+    {
+      "id": "40ce",
+      "title": "q",
+      "genre": "q",
+      "price": "q"
+    }
+  ]
+}

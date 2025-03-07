@@ -11,7 +11,7 @@ const Dashboard = () => {
     const [gamesFiltered, setGamesFiltered] = useState([]);
 
     useEffect(() => {
-        fetch("https://gamesmax.onrender.com/games", {
+        fetch("http://localhost:3002/games", {
           headers: {
             accept: "application/json",
           },
@@ -27,38 +27,38 @@ const Dashboard = () => {
       });
     }, []);
 
-    const appGameHandler = useCallback(
-        (game) => {
-            setGames((prevGames) => [game, ...prevGames]);
-            setGamesFiltered((prevGames) => [game, ...prevGames]);
+    // const appGameHandler = useCallback(
+    //     (game) => {
+    //         setGames((prevGames) => [game, ...prevGames]);
+    //         setGamesFiltered((prevGames) => [game, ...prevGames]);
 
-            const newGameId = games[games.length - 1].id + 1;
+    //         const newGameId = games[games.length - 1].id + 1;
 
-            fetch("https://gamesmax.onrender.com/games", {
-                method: "POST",
-                headers: {
-                  "content-type": "application/json",
-                },
+    //         fetch("http://localhost:3002/games", {
+    //             method: "POST",
+    //             headers: {
+    //               "content-type": "application/json",
+    //             },
                 
-        body: JSON.stringify({
-          id: newGameId,
-          title: game.title,
-          genre: game.genre,
-          price: game.price,
-        }),
-      })
-      .then((response) => {
-        if (response.ok) return response.json();
-        else {
-          throw new Error("The response had some erroes")
-        }
-      })
-      .then(() => {
-        const newGameArray = [{ ...game, id: newGameId }, ...games];
-        setGames(newGameArray);
-        setGamesFiltered(newGameArray);
-      })
-        }, [games])
+    //     body: JSON.stringify({
+    //       id: newGameId,
+    //       title: game.title,
+    //       genre: game.genre,
+    //       price: game.price,
+    //     }),
+    //   })
+    //   .then((response) => {
+    //     if (response.ok) return response.json();
+    //     else {
+    //       throw new Error("The response had some erroes")
+    //     }
+    //   })
+    //   .then(() => {
+    //     const newGameArray = [{ ...game, id: newGameId }, ...games];
+    //     setGames(newGameArray);
+    //     setGamesFiltered(newGameArray);
+    //   })
+    //     }, [games])
 
     const appGenreHandler = (genre) => {
         setGenreSelected(genre);
@@ -77,7 +77,6 @@ const Dashboard = () => {
         </Row>
         <br />
         <div>
-            <NewGame onGameSaved={appGameHandler}/>
             <GameFilter genreSelected={genreSelected} onGenreChange={appGenreHandler}/>
             <Games genreSelected={genreSelected} games={gamesFiltered}/>
         </div>

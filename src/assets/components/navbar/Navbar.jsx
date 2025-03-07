@@ -27,12 +27,16 @@ function Navbar() {
             <li className="nav__item">
                 <Link to="/home">Home</Link>
             </li>
+            <li>
+                <Link to={"/gamesform"}>ABM Juegos</Link>
+            </li>
             <li className="nav__item">
                 <Link to={"/nosotros"}>Nosotros</Link>
             </li>
             <li className="nav__item">
                 <Link to={"/login"}>Cerrar Sesion</Link>
             </li>
+            
         </ul>
         <div onClick={navToggle} className={toggleIcon}>
             <div className="line1"></div>
