@@ -31,10 +31,22 @@
       "price": "50"
     },
     {
-      "id": "40ce",
-      "title": "q",
-      "genre": "q",
-      "price": "q"
+      "id": 6,
+      "title": "The Witcher 3",
+      "genre": "RPG",
+      "price": "70"
+    },
+    {
+      "id": 7,
+      "title": "El Señor de los Anillos",
+      "genre": "Aventura",
+      "price": "60"
+    },
+    {
+      "id": 8,
+      "title": "Fallout New Vegas",
+      "genre": "Aventura",
+      "price": "40"
     }
   ]
 }

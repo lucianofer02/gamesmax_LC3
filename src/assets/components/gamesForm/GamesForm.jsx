@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import React from 'react';
 import './GamesForm.css'
+import { set } from 'firebase/database';
 const Gamesform = () => {
     const [title, setTitle] = useState("");
     const [price, setPrice] = useState("");
@@ -8,7 +9,9 @@ const Gamesform = () => {
     const [isCollapsed, setIsCollapsed] = useState(true)
     const [formValid, setFormValid] = useState(false);
     const [gameCreated, setGameCreated] = useState(false);
+    const [proximoId, setProximoId] = useState(null);
 
+    
     useEffect(() => {
         const timer = setTimeout(() => {
             console.log("check form");
@@ -22,20 +25,31 @@ const Gamesform = () => {
         }
     }, [title, price, genre]);
 
-    const changeTitleHandler = (event) => {
-        setTitle(event.target.value);
-    }
+    // Obtiene el ultimo id de la lista de juegos y le suma 1 para obtener el proximo id
+    const obtenerProximoId = async () => {
+        try {
+          const response = await fetch("http://localhost:3002/games");
+          const data = await response.json();
+      
+          if (data.length === 0) {
+            return 1;
+          }
+      
+          const ultimoId = Math.max(...data.map(item => item.id));
+          return ultimoId + 1;
+        } catch (error) {
+          console.error('Error al obtener el último ID:', error);
+          return null;
+        }
+      };
 
-    const changeGenreHandler = (event) => {
-        setGenre(event.target.value);
-    }
+      // Obtiene el proximo id y lo setea en el estado
+      obtenerProximoId().then(setProximoId);
 
-    const changePriceHandler = (event) => {
-        setPrice(event.target.value);
-    }
-
-    const addGameHandler = async () => {
-        const newGame = {
+      // Funcion para agregar un juego
+      const addGameHandler = async () => {
+          const newGame = {
+            id: proximoId,
             title,
             genre,
             price,
@@ -63,15 +77,12 @@ const Gamesform = () => {
         setGenre("");
     }
 
+ 
     const ResetImputHandler = () => {
         setTitle("");
         setPrice("");
         setGenre("");
     }
-
-    const toggleCollapse = () => {
-        setIsCollapsed(!isCollapsed);
-    };
 
     const changeGameCreated = () => {
         setGameCreated(false);
@@ -83,7 +94,7 @@ const Gamesform = () => {
             <div className='new-game-control'>
                 <label>Título: </label>
                 <input
-                 onChange={changeTitleHandler}
+                 onChange={(event) => setTitle(event.target.value)}
                  type="text"
                  className='input-control'
                  value={title} />
@@ -91,7 +102,7 @@ const Gamesform = () => {
             <div className='new-game-control'>
                 <label>Genero:</label>
                 <input
-                 onChange={changeGenreHandler}
+                 onChange={(event) => setGenre(event.target.value)}
                  type="text"
                  className='input-control'
                  value={genre}
@@ -100,15 +111,15 @@ const Gamesform = () => {
             <div className='new-game-control'>
                 <label>Precio:</label>
                 <input
-                 onChange={changePriceHandler}
+                 onChange={(event) => setPrice(event.target.value)}
                  type="text"
                  className='input-control'
                  value={price}
                   />
             </div>
             <div className='new-game-actions'>
-                <button onClick={ResetImputHandler} className='form-btn'>Cancelar</button>
-                <button disabled={!formValid} onClick={addGameHandler} className='form-btn'>Agregar</button>
+                <button onClick={ResetImputHandler} className='cancel-btn'>Cancelar</button>
+                <button disabled={!formValid} onClick={addGameHandler} className='accept-btn'>Agregar</button>
             </div>
         </div>
             {gameCreated && 
@@ -118,5 +129,5 @@ const Gamesform = () => {
                 </div>}
     </div>
   );
-};
-export default Gamesform
+}
+  export default Gamesform;

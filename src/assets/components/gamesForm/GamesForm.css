@@ -14,8 +14,16 @@
     justify-content: space-between;
 }
 
-.form-btn{
-    background-color: black;
+.cancel-btn{
+    background-color: red;
+    width: 130px;
+    color: white;
+    border-radius: 10px;
+    margin: 5%;
+}
+
+.accept-btn{
+    background-color: green;
     width: 130px;
     color: white;
     border-radius: 10px;
