@@ -1,18 +1,15 @@
-import { useEffect, useState } from 'react'
 import React from 'react';
-import './GamesForm.css'
-import CreateGame from '../ABM-Games/CreateGame';
-import UpdateGame from '../ABM-Games/UpdateGame';
-const Gamesform = () => {
+import { useState, useEffect } from 'react'
+
+
+const CreateGame = () => {
     const [title, setTitle] = useState("");
     const [price, setPrice] = useState("");
     const [genre, setGenre] = useState("");
-    const [isCollapsed, setIsCollapsed] = useState(true)
     const [formValid, setFormValid] = useState(false);
     const [gameCreated, setGameCreated] = useState(false);
     const [proximoId, setProximoId] = useState(null);
 
-    
     useEffect(() => {
         const timer = setTimeout(() => {
             console.log("check form");
@@ -42,19 +39,19 @@ const Gamesform = () => {
           console.error('Error al obtener el último ID:', error);
           return null;
         }
-      };
+    }
 
-      // Obtiene el proximo id y lo setea en el estado
+    // Obtiene el proximo id y lo setea en el estado
       obtenerProximoId().then(setProximoId);
 
-      // Funcion para agregar un juego
+    // Funcion para agregar un juego
       const addGameHandler = async () => {
           const newGame = {
             id: proximoId,
             title,
             genre,
             price,
-        };
+        }
         try {
             const response = await fetch("http://localhost:3002/games", {
                 method: "POST",
@@ -78,7 +75,6 @@ const Gamesform = () => {
         setGenre("");
     }
 
- 
     const ResetImputHandler = () => {
         setTitle("");
         setPrice("");
@@ -90,9 +86,46 @@ const Gamesform = () => {
     }
   return (
     <div>
-        <CreateGame />
-        <UpdateGame />
+    <div className='new-game-controls'>
+    <h2>Creación de Videojuego</h2>
+    <div className='new-game-control'>
+        <label>Título: </label>
+        <input
+         onChange={(event) => setTitle(event.target.value)}
+         type="text"
+         className='input-control'
+         value={title} />
     </div>
-  );
+    <div className='new-game-control'>
+        <label>Genero:</label>
+        <input
+         onChange={(event) => setGenre(event.target.value)}
+         type="text"
+         className='input-control'
+         value={genre}
+          />
+    </div>
+    <div className='new-game-control'>
+        <label>Precio:</label>
+        <input
+         onChange={(event) => setPrice(event.target.value)}
+         type="text"
+         className='input-control'
+         value={price}
+          />
+    </div>
+    <div className='new-game-actions'>
+        <button onClick={ResetImputHandler} className='cancel-btn'>Cancelar</button>
+        <button disabled={!formValid} onClick={addGameHandler} className='accept-btn'>Agregar</button>
+    </div>
+</div>
+    {gameCreated && 
+        <div className='gameABM'>
+            <h4>Juego creado con éxito</h4>
+            <button onClick={changeGameCreated}>Aceptar</button>
+        </div>}
+</div>
+  )
 }
-  export default Gamesform;
+
+export default CreateGame

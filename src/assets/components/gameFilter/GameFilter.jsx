@@ -14,6 +14,7 @@ const GameFilter = ({onGenreChange, genreSelected}) => {
                     <option value="Aventura">Aventura</option>
                     <option value="RPG">RPG</option>
                     <option value="FPS">FPS</option>
+                    <option value="Deportes">Deportes</option>
                 </select>
             </div>
         </div>

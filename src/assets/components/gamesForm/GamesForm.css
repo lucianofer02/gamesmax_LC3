@@ -3,6 +3,8 @@
     border-radius: 10px;
     border-width: 1px;
     align-items: center;
+    width: 100%;
+    padding: 10px;
 }
 
 .new-game-control{
@@ -30,7 +32,7 @@
     margin: 5%;
 }
 
-.gameCreated{
+.gameABM{
     color: green;
     font-size: 20px;
     border-radius: 10px;

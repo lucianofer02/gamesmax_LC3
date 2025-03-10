@@ -1,49 +1,49 @@
 {
   "games": [
     {
-      "id": 1,
+      "id": "1",
       "title": "The Last of Us",
       "genre": "Aventura",
       "price": "60"
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "God of War",
       "genre": "Aventura",
-      "price": "60"
+      "price": "50"
     },
     {
-      "id": 3,
-      "title": "Final Fantasy XVI",
-      "genre": "RPG",
-      "price": "70"
+      "id": "3",
+      "title": "a",
+      "genre": "a",
+      "price": "23"
     },
     {
-      "id": 4,
-      "title": "Call of Duty WWII",
-      "genre": "FPS",
-      "price": "60"
+      "id": "4",
+      "title": "EA FC 25",
+      "genre": "Deportes",
+      "price": "50"
     },
     {
-      "id": 5,
+      "id": "5",
       "title": "Battlefield V",
       "genre": "FPS",
       "price": "50"
     },
     {
-      "id": 6,
+      "id": "6",
       "title": "The Witcher 3",
       "genre": "RPG",
       "price": "70"
     },
     {
-      "id": 7,
+      "id": "7",
       "title": "El Señor de los Anillos",
       "genre": "Aventura",
       "price": "60"
     },
     {
-      "id": 8,
+      "id": "8",
       "title": "Fallout New Vegas",
       "genre": "Aventura",
       "price": "40"
