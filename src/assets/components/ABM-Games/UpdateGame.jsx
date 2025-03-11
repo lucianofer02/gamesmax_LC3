@@ -39,8 +39,8 @@ const UpdateGame = () => {
           }),
         })
           .then(response => response.json())
-          .then(updatedGame => {
-            setGames(games.map(game => game.id === updatedGame.id ? updatedGame : game));
+          .then(gameUpdated => {
+            setGames(games.map(game => game.id === gameUpdated.id ? gameUpdated : game));
             setGameUpdated(true);
           })
           .catch(error => {

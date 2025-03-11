@@ -7,6 +7,7 @@ import Navbar from "./assets/components/navbar/Navbar";
 import "./App.css";
 import NewGame from "./assets/components/newGame/NewGame";
 import Nosotros from "./assets/components/nosotros/Nosotros";
+import UsersForm from "./assets/components/usersForm/UsersForm";
 
 function App() {
   const location = useLocation();
@@ -25,7 +26,9 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/games" element={<Games />} />
           <Route path="/gamesform" element={<NewGame />} />
-          <Route path="/Nosotros" element={<Nosotros />} />
+          <Route path="/nosotros" element={<Nosotros />} />
+          <Route path="/usersform" element={<UsersForm />} />
+
           
         </Routes>
       </AuthProvider>

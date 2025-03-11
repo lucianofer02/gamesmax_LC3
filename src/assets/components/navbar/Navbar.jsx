@@ -27,6 +27,9 @@ function Navbar() {
             <li className="nav__item">
                 <Link to="/home">Home</Link>
             </li>
+            <li className="nav__item">
+                <Link to={"/usersform"}>ABM Usuarios</Link>
+            </li>
             <li>
                 <Link to={"/gamesform"}>ABM Juegos</Link>
             </li>
