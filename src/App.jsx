@@ -10,15 +10,14 @@ import Nosotros from "./assets/components/nosotros/Nosotros";
 import UsersForm from "./assets/components/usersForm/UsersForm";
 
 function App() {
-  const location = useLocation();
-  const hideNavbar = location.pathname === "/" || location.pathname === "/login";
 
 
   // hidenavbar se utiliza para ocultar el navbar durante el inicio de sesion para que los usuarios que no inicien sesion no puedan acceder a la app.
   return (
     <>
-      {!hideNavbar && <Navbar />} 
-      <AuthProvider>
+      <BrowserRouter>
+        <AuthProvider>
+          <Navbar />
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/login" element={<Login />} />
@@ -28,10 +27,9 @@ function App() {
           <Route path="/gamesform" element={<NewGame />} />
           <Route path="/nosotros" element={<Nosotros />} />
           <Route path="/usersform" element={<UsersForm />} />
-
-          
         </Routes>
-      </AuthProvider>
+        </AuthProvider>
+      </BrowserRouter>
     </>
   );
 }

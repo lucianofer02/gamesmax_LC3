@@ -4,10 +4,6 @@ import './ABMUsers.css'
 const UpdateUser = () => {
     const [users, setUsers] = useState([]);
     const [id, setId] = useState('');
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [email, setEmail] = useState('');
-    const [role, setRole] = useState('');
     const [userUpdated, setUserUpdated] = useState(false);
     const [editingUserId, setEditingUserId] = useState(null);
     const [formData, setFormData] = useState({}); 

@@ -3,31 +3,42 @@
     {
       "id": "1",
       "username": "Superadmin",
-      "contraseña": "aa",
+      "password": "superadmin",
       "email": "",
       "role": "superadmin",
-      "password": "superadmin"
+      "status": "active"
     },
     {
       "id": "2",
       "username": "Admin",
       "password": "admin",
       "email": "",
-      "role": "admin"
+      "role": "admin",
+      "status": "active"
     },
     {
       "id": "3",
       "username": "Client",
+      "password": "client",
       "email": "",
       "role": "client",
-      "password": "client"
+      "status": "active"
     },
     {
       "id": "4",
       "username": "Luciano",
       "password": "luciano",
       "email": "luciano",
-      "role": "superadmin"
+      "role": "superadmin",
+      "status": "active"
+    },
+    {
+      "id": 5,
+      "username": "tici",
+      "password": "tici",
+      "email": "tici",
+      "role": "superadmin",
+      "status": "active"
     }
   ]
 }

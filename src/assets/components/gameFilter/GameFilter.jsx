@@ -10,11 +10,12 @@ const GameFilter = ({onGenreChange, genreSelected}) => {
         <div className='games-filter'>
             <div className='games-filter-control'>
                 <select onChange={changeGenreHandler} value={genreSelected}>
-                    <option value="Todo" hidden>Género</option>
+                    <option  value="">Género</option>
                     <option value="Aventura">Aventura</option>
                     <option value="RPG">RPG</option>
                     <option value="FPS">FPS</option>
                     <option value="Deportes">Deportes</option>
+                    <option value="Plataformas">Plataformas</option>
                 </select>
             </div>
         </div>

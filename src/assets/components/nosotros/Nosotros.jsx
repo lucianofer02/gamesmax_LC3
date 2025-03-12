@@ -5,9 +5,6 @@ import './Nosotros.css'
 const Nosotros = () => {
   return (
     <div>
-        <div className='nav'>
-            <Navbar />
-        </div>
         <h1>Nosotros</h1>
         <div className='nosotros_cards'>
             <div className='nosotros_card'>
