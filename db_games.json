@@ -1,12 +1,6 @@
 {
   "games": [
     {
-      "id": "1",
-      "title": "The Last of Us",
-      "genre": "Aventura",
-      "price": 50
-    },
-    {
       "id": "2",
       "title": "Red Dead Redemption 2",
       "genre": "Aventura",
@@ -46,7 +40,7 @@
       "id": "8",
       "title": "Fallout New Vegas",
       "genre": "Aventura",
-      "price": 50
+      "price": "20"
     },
     {
       "id": "9",

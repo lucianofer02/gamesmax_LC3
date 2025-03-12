@@ -47,7 +47,7 @@ const CreateGame = () => {
     // Funcion para agregar un juego
       const addGameHandler = async () => {
           const newGame = {
-            id: proximoId,
+            id: String(proximoId), // String para que el id siempre se cree con comillas
             title,
             genre,
             price,

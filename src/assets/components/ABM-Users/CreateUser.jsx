@@ -47,7 +47,7 @@ const CreateUser = () => {
     // Funcion para agregar un usuario
         const addUserHandler = async () => {
             const newUser = {
-                id: proximoId,
+                id: String(proximoId), // String() hace que el id este entre comillas, permitiendo la modificacion y eliminacion del usuario
                 username,
                 password,
                 email,

@@ -3,6 +3,7 @@ import React from 'react';
 import './GamesForm.css'
 import CreateGame from '../ABM-Games/CreateGame';
 import UpdateGame from '../ABM-Games/UpdateGame';
+import DeleteGame from '../ABM-Games/DeleteGame';
 const Gamesform = () => {
     const [title, setTitle] = useState("");
     const [price, setPrice] = useState("");
@@ -92,6 +93,7 @@ const Gamesform = () => {
     <div>
         <CreateGame />
         <UpdateGame />
+        <DeleteGame onDelete={(id) => setGames(prevGames => prevGames.filter(game => game.id !== id))}/>
     </div>
   );
 }
