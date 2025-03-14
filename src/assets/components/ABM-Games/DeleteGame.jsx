@@ -52,7 +52,7 @@ const DeleteGame = () => {
 
     return (
         <div>
-            {user.role === 'superadmin' ||  user.role === 'admin' && (
+            {(user.role === 'superadmin' ||  user.role === 'admin') && (
                 <>
                     <select value={selectedGame} onChange={(e) => setSelectedGame(e.target.value)}>
                         <option value="">Selecciona un juego</option>
