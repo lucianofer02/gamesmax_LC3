@@ -13,7 +13,7 @@ const UpdateUser = () => {
 
     // Get de todos los usuarios
     useEffect(() => {
-        fetch("http://localhost:3001/users") // Cambia la URL según tu configuración de json-server
+        fetch("http://localhost:3001/users") 
           .then((response) => response.json())
           .then((data) => setUsers(data))
           .catch((error) => console.error("Error al cargar los usuarios:", error));
@@ -33,7 +33,7 @@ const UpdateUser = () => {
 
       const handleSaveClick = (id) => {
         const updatedUser = {
-            ...formData[id], // Datos modificados
+            ...formData[id], 
           };
 
         fetch(`http://localhost:3001/users/${id}`, {
@@ -41,19 +41,19 @@ const UpdateUser = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(updatedUser), // Enviar los datos actualizados
+          body: JSON.stringify(updatedUser),
         })
         .then(response => response.json())
         .then(userUpdated => {
             setUsers(users.map(user => user.id === id ? userUpdated : user));
             setUserUpdated(true);
-            setEditingUserId(null); // Salir del modo edición
+            setEditingUserId(null);
           })
           .catch((error) => console.error("Error en el PUT:", error));      
         };
 
       const handleCancelClick = () => {
-        setEditingUserId(null); // Salir del modo de edición sin guardar cambios
+        setEditingUserId(null);
       };
 
   return (

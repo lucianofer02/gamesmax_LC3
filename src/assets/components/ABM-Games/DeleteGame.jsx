@@ -8,24 +8,23 @@ const DeleteGame = () => {
     const [selectedGame, setSelectedGame] = useState('');
 
     // Obtiene la lista de juegos y actualiza el estado de la misma
+    useEffect(() => {
     const fetchGames = () => {
         fetch("http://localhost:3002/games")
             .then(response => response.json())
             .then(data => setGames(data))
             .catch(error => console.error("Error al cargar los juegos:", error));
     };
-
-    // Se utiliza cuando se ejecuta el componente para mostrar la lista de juegos
-    useEffect(() => {
+    
         fetchGames();
-    }, []);
+    }, [games]);
 
     // Maneja el borrado de un juego verificando el rol del usuario y preguntando si desea borrar el juego seleccionado
     const handleDelete = () => {
-        if (!user || user.role !== 'superadmin') {
-            alert("No tienes permiso para eliminar juegos.");
-            return;
-        }
+        // if (!user || user.role !== 'superadmin') {
+        //     alert("No tienes permiso para eliminar juegos.");
+        //     return;
+        // }
         if (!selectedGame) {
             alert("Selecciona un juego para eliminar.");
             return;
@@ -43,18 +42,17 @@ const DeleteGame = () => {
         })
         .then(data => {
             console.log("Respuesta del servidor:", data);
-            fetchGames(); // Actualiza la lista de juegos después de eliminar
-            setGames(games.filter(game => game.id !== selectedGame)); // Una vez eliminado el juego, la lista se actualiza localmente
+            setGames(games.filter(game => game.id !== selectedGame)); 
             setSelectedGame('');
             alert("Juego eliminado correctamente.");
         })
         .catch(error => console.error("Error al eliminar el juego:", error));
     };
 
-    // El componente se renderiza solo si el usuario posee el rol superadmin
+
     return (
         <div>
-            {user?.role === 'superadmin' && (
+            {user.role === 'superadmin' ||  user.role === 'admin' && (
                 <>
                     <select value={selectedGame} onChange={(e) => setSelectedGame(e.target.value)}>
                         <option value="">Selecciona un juego</option>

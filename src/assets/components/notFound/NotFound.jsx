@@ -1,16 +1,13 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 
 const PageNotFound = () => {
     const navigate = useNavigate();
 
-    const backToHomePageHandler = () =>{
-        navigate("/login")
-    };
   return (
     <div>
-        <h2>error 404</h2>
-        <button onClick={backToHomePageHandler}>Volver a iniciar sesion</button>
+        <h1>Parece que la pagina que querés acceder no existe</h1>
+        <h2 style={{padding: "10px"}}>Volver a <Link to="/home">home</Link></h2>
     </div>
   )
 }

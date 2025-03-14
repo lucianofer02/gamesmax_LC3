@@ -4,32 +4,57 @@ import Login from "./assets/components/login/Login";
 import Games from "./assets/components/games/Games";
 import Dashboard from "./assets/components/dashboard/Dashboard";
 import Navbar from "./assets/components/navbar/Navbar";
-import "./App.css";
 import NewGame from "./assets/components/newGame/NewGame";
 import Nosotros from "./assets/components/nosotros/Nosotros";
 import UsersForm from "./assets/components/usersForm/UsersForm";
+import "./App.css";
+import ProtectedRoute from "./assets/components/ProtectedRoute/ProtectedRoute";
+import Unauthorized from "./assets/components/unauthorized/unauthorized";
+import PageNotFound from "./assets/components/notFound/NotFound";
+import Gamesform from "./assets/components/gamesForm/GamesForm";
 
 function App() {
 
 
-  // hidenavbar se utiliza para ocultar el navbar durante el inicio de sesion para que los usuarios que no inicien sesion no puedan acceder a la app.
+
   return (
     <>
-      <BrowserRouter>
         <AuthProvider>
+      <BrowserRouter>
           <Navbar />
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/home" element={<Dashboard />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/games" element={<Games />} />
-          <Route path="/gamesform" element={<NewGame />} />
-          <Route path="/nosotros" element={<Nosotros />} />
-          <Route path="/usersform" element={<UsersForm />} />
+          <Route path="/home" element={
+            <ProtectedRoute requiredRoles={["client","admin", "superadmin"]}>
+              <Dashboard />
+            </ProtectedRoute>
+            } />
+          <Route path="/games" element={
+            <ProtectedRoute requiredRoles={["client","admin", "superadmin"]}>
+              <Games />
+            </ProtectedRoute>
+            } />
+          <Route path="/gamesform" element={
+            <ProtectedRoute requiredRoles={["admin", "superadmin"]}>
+              <Gamesform />
+            </ProtectedRoute> 
+            } />
+          <Route path="/nosotros" element={
+            <ProtectedRoute requiredRoles={["client","admin", "superadmin"]}>
+            <Nosotros />
+            </ProtectedRoute> 
+            } />
+          <Route path="/usersform" element={
+            <ProtectedRoute requiredRoles={["superadmin"]}>
+            <UsersForm />
+          </ProtectedRoute>
+            } />
+          <Route path="/unauthorized" element={<Unauthorized />} />
+          <Route path="/*" element={<PageNotFound />} />
         </Routes>
-        </AuthProvider>
       </BrowserRouter>
+        </AuthProvider>
     </>
   );
 }

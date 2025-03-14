@@ -8,7 +8,9 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "fake-api" : "json-server --watch db_games.json --port 3002"
+    "fake-api-games" : "json-server --watch db_games.json --port 3002",
+    "fake-api-users" : "json-server --watch db_users.json --port 3001"
+
   },
   "dependencies": {
     "bootstrap": "^5.3.2",

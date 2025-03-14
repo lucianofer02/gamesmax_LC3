@@ -12,7 +12,6 @@ const CreateGame = () => {
 
     useEffect(() => {
         const timer = setTimeout(() => {
-            console.log("check form");
             const isValid = title !== "" && price !== "" && genre !== "";
             setFormValid(isValid);
         }, 500);

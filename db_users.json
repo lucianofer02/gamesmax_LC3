@@ -34,11 +34,10 @@
     },
     {
       "id": "5",
-      "username": "tici",
+      "username": "Tici",
       "password": "tici",
       "email": "tici",
-      "role": "superadmin",
-      "status": "active"
+      "role": "admin"
     }
   ]
 }

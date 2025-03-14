@@ -7,20 +7,18 @@ const DeleteUser = () => {
     const [users, setUsers] = useState([]);
     const [selectedUser, setSelectedUser] = useState('');
 
-    // Obtiene la lista de juegos y actualiza el estado de la misma
-    const fetchUsers = () => {
-        fetch("http://localhost:3001/users")
-            .then(response => response.json())
-            .then(data => setUsers(data))
-            .catch(error => console.error("Error al cargar los usuarios:", error));
-    };
+        // Obtiene la lista de usuarios y actualiza el estado de la misma
+        useEffect(() => {
+        const fetchUsers = () => {
+            fetch("http://localhost:3001/users")
+                .then(response => response.json())
+                .then(data => setUsers(data))
+                .catch(error => console.error("Error al cargar los usuarios:", error));
+        };
+            fetchUsers();
+        }, []);
 
-    // Se utiliza cuando se ejecuta el componente para mostrar la lista de juegos
-    useEffect(() => {
-        fetchUsers();
-    }, []);
-
-    // Maneja el borrado de un juego verificando el rol del usuario y preguntando si desea borrar el juego seleccionado
+    // Maneja el borrado de un usuario verificando el rol del mismo y preguntando si desea borrar el usuario seleccionado
     const handleDelete = () => {
         if (!user || user.role !== 'superadmin') {
             alert("No tienes permiso para eliminar usuarios.");
@@ -32,7 +30,7 @@ const DeleteUser = () => {
         }
         if (!window.confirm("¿Estás seguro de que quieres eliminar este usuario?")) return;
         
-        // Se realiza la solicitud Delete para eliminar el juego seleccionado
+        // Se realiza la solicitud Delete para eliminar el usuario seleccionado
         fetch(`http://localhost:3001/users/${selectedUser}`, {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json' }

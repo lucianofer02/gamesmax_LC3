@@ -30,9 +30,10 @@ function Navbar() {
 
   return (
     <nav className="nav">
-        <a href="#" className="nav__brand">gamesmax</a>
+        <Link to="/home" className='nav__brand'>GAMESMAX</Link>
         <ul className={active}>
-        <li className="nav__item"><Link to="/home">Home</Link></li>
+        {/* <li className="nav__item"><Link to="/home">Home</Link></li> */}
+
             {user.role === 'superadmin' && (
                 <>
                 <li className="nav__item"><Link to={"/usersform"}>ABM Usuarios</Link></li>
