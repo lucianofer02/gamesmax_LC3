@@ -1,4 +1,4 @@
-/* import React, { useContext } from 'react';
+import React, { useContext } from 'react';
 import AuthContext from '../../../context/AuthContext';
 
 const CreateCart = ({ game, addToCart }) => {
@@ -17,4 +17,4 @@ const CreateCart = ({ game, addToCart }) => {
   );
 };
 
-export default CreateCart; */
+export default CreateCart;

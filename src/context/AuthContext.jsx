@@ -24,7 +24,13 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
-      setUser(JSON.parse(storedUser));  
+      const parsedUser = JSON.parse(storedUser);
+      fetch(`http://localhost:3001/users/${parsedUser.id}`)
+        .then((response) => response.json())
+        .then((data) => {
+          setUser(data); // Actualiza el usuario con los datos más recientes
+        })
+        .catch((error) => console.error("Error al sincronizar usuario:", error));
     }
     setIsLoading(false); 
   }, []);
@@ -34,7 +40,7 @@ export function AuthProvider({ children }) {
   }
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, setUser, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

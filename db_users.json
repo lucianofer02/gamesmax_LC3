@@ -30,14 +30,37 @@
       "password": "luciano",
       "email": "luciano",
       "role": "superadmin",
-      "status": "active"
+      "status": "active",
+      "cart": [
+        {
+          "title": "Super Mario 64",
+          "price": 40,
+          "genre": "Plataformas"
+        },
+        {
+          "title": "Red Dead Redemption 2",
+          "price": 70,
+          "genre": "Aventura"
+        },
+        {
+          "title": "Super Mario 64",
+          "price": 40,
+          "genre": "Plataformas"
+        },
+        {
+          "title": "Super Mario 64",
+          "price": 40,
+          "genre": "Plataformas"
+        }
+      ]
     },
     {
       "id": "5",
       "username": "Tici",
       "password": "tici",
       "email": "tici",
-      "role": "admin"
+      "role": "admin",
+      "cart": []
     }
   ]
 }

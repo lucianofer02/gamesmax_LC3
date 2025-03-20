@@ -12,6 +12,7 @@ import ProtectedRoute from "./assets/components/ProtectedRoute/ProtectedRoute";
 import Unauthorized from "./assets/components/unauthorized/unauthorized";
 import PageNotFound from "./assets/components/notFound/NotFound";
 import Gamesform from "./assets/components/gamesForm/GamesForm";
+import Cart from "./assets/components/Cart/Cart";
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/cart" element={<Cart />} />
           <Route path="/home" element={
             <ProtectedRoute requiredRoles={["client","admin", "superadmin"]}>
               <Dashboard />

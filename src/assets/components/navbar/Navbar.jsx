@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import './Navbar.css'
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../../context/AuthContext';
+import { BsCartFill } from 'react-icons/bs'; // Ícono de carrito
 
 function Navbar() {
     const [active, setActive] = useState('nav__menu');
@@ -48,6 +49,14 @@ function Navbar() {
             )} 
             <li className="nav__item"><Link to="/nosotros">Nosotros</Link></li>
             <li className="nav__item"><Link to={"/login"} onClick={handleLogout}>Cerrar Sesion</Link></li>
+            <li className="nav__item">
+                    <Link to="/cart" className="nav__cart">
+                        <BsCartFill />
+                        <span className="cart-count">
+                            {user.cart?.length || 0} {/* Muestra el número de juegos en el carrito */}
+                        </span>
+                    </Link>
+                </li>
         </ul>
         <div onClick={navToggle} className={toggleIcon}>
             <div className="line1"></div>

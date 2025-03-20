@@ -1,4 +1,4 @@
-/* import React from 'react';
+import React from 'react';
 
 const DeleteCart = ({ cart, removeFromCart }) => {
   return (
@@ -13,4 +13,4 @@ const DeleteCart = ({ cart, removeFromCart }) => {
   );
 };
 
-export default DeleteCart; */
+export default DeleteCart;
