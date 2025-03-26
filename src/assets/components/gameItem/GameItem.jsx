@@ -16,6 +16,16 @@ const GameItem = ({title, price, genre}) => {
   };
 
   const addToCart = async (game) => {
+    const gameAlreadyInCart = user.cart.some(
+      (item) => item.title === game.title
+    );
+
+    if (gameAlreadyInCart) {
+      // Si el juego ya está en el carrito, muestra una alerta y no continúa
+      alert("Este juego ya está en el carrito.");
+      return;
+    }
+    
     try {
       const updatedCart = [...(user.cart || []), game]; // Agrega el juego al carrito actual
       const response = await fetch(`http://localhost:3001/users/${user.id}`, {
