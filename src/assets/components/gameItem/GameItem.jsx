@@ -4,12 +4,12 @@ import '../gameItem/GameItem.css'
 import { BsFillCartPlusFill } from 'react-icons/bs';
 import AuthContext, { useAuth } from '../../../context/AuthContext';
 
-const GameItem = ({title, price, genre}) => {
+const GameItem = ({title, price, genre, image}) => {
   const { user, setUser } = useAuth();
 
   const handleAddToCart = () => {
     if (user) {
-      addToCart({title, price, genre});
+      addToCart({title, price, genre, image});
     } else {
       alert('Debes iniciar sesión para agregar al carrito');
     }
@@ -51,7 +51,7 @@ const GameItem = ({title, price, genre}) => {
   
   return (
     <GameCard>
-        <div className='game-item-containers'>
+        <div className='game-item-containers' style={{backgroundImage: `url(${image})`}}>
             <div className='game-item-container'>
                 <h1>{title}</h1>
                 <h3>{genre}</h3>

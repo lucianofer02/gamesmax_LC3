@@ -6,6 +6,7 @@ const UpdateGame = () => {
     const [title, setTitle] = useState('');
     const [genre, setGenre] = useState('');
     const [price, setPrice] = useState('');
+    const [image, setImage] = useState('');
     const [gameUpdated, setGameUpdated] = useState(false);
 
     // Get de todos los juegos
@@ -24,6 +25,30 @@ const UpdateGame = () => {
       });
     }, []);
 
+    const handleImageChange = (event) => {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          setImage(reader.result); // Guarda la imagen en formato Base64
+        };
+        reader.readAsDataURL(file);
+      }
+    };
+    
+
+    const handleDrop = (event) => {
+      const file = event.target.files[0];
+      if (file) {
+          const reader = new FileReader();
+          reader.onloadend = () => {
+              setImagePreview(reader.result);
+          };
+          reader.readAsDataURL(file);
+          setImage(file);
+      }
+    }
+
     // Update de un juego
     const updateGame = () => {
         fetch(`http://localhost:3002/games/${selectedGame}`, {
@@ -36,6 +61,7 @@ const UpdateGame = () => {
             title: title,
             genre: genre,
             price: price,
+            image: image
           }),
         })
           .then(response => response.json())
@@ -50,6 +76,7 @@ const UpdateGame = () => {
             setTitle('');
             setGenre('');
             setPrice('');
+            setImage(null);
       };
     
 
@@ -70,6 +97,7 @@ const UpdateGame = () => {
         setTitle("");
         setPrice("");
         setGenre("");
+        setImage(null);
     }
 
   return (
@@ -117,6 +145,14 @@ const UpdateGame = () => {
                 onChange={(event) => setPrice(event.target.value)}
                 required
                 />
+            </div>
+            <div onDrop={handleDrop} onDragOver={(e) => e.preventDefault()}>
+              <label>Nueva Imagen, selecciona un archivo o arrastra una imagen:</label>
+              <input
+              type='file'
+              accept='image/*'
+              onChange={handleImageChange}
+              />
             </div>
         <button type="submit" className='cancel-btn' onClick={ResetImputHandler}>Cancelar</button>
         <button type="submit" className='accept-btn' onClick={updateGame}>Actualizar Juego</button>

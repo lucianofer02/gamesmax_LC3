@@ -6,13 +6,15 @@ const CreateGame = () => {
     const [title, setTitle] = useState("");
     const [price, setPrice] = useState("");
     const [genre, setGenre] = useState("");
+    const [image, setImage] = useState("");
+    const [imagePreview, setImagePreview] = useState("");
     const [formValid, setFormValid] = useState(false);
     const [gameCreated, setGameCreated] = useState(false);
     const [proximoId, setProximoId] = useState(null);
 
     useEffect(() => {
         const timer = setTimeout(() => {
-            const isValid = title !== "" && price !== "" && genre !== "";
+            const isValid = title !== "" && price !== "" && genre !== "" && image !== null;
             setFormValid(isValid);
         }, 500);
 
@@ -20,7 +22,7 @@ const CreateGame = () => {
             console.log("cleanup")
             clearTimeout(timer);
         }
-    }, [title, price, genre]);
+    }, [title, price, genre, image]);
 
     // Obtiene el ultimo id de la lista de juegos y le suma 1 para obtener el proximo id
     const obtenerProximoId = async () => {
@@ -43,6 +45,30 @@ const CreateGame = () => {
     // Obtiene el proximo id y lo setea en el estado
       obtenerProximoId().then(setProximoId);
 
+      const handleImageChange = (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setImagePreview(reader.result);
+            };
+            reader.readAsDataURL(file);
+            setImage(file);
+        }
+      };
+
+      const handleDrop = (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setImagePreview(reader.result);
+            };
+            reader.readAsDataURL(file);
+            setImage(file);
+        }
+      }
+
     // Funcion para agregar un juego
       const addGameHandler = async () => {
           const newGame = {
@@ -50,7 +76,8 @@ const CreateGame = () => {
             title,
             genre,
             price,
-        }
+            image: imagePreview
+        };
         try {
             const response = await fetch("http://localhost:3002/games", {
                 method: "POST",
@@ -72,19 +99,23 @@ const CreateGame = () => {
         setTitle("");
         setPrice("");
         setGenre("");
+        setImage(null);
+        setImagePreview(null);
     }
 
     const ResetImputHandler = () => {
         setTitle("");
         setPrice("");
         setGenre("");
+        setImage(null);
+        setImagePreview(null);
     }
 
     const changeGameCreated = () => {
         setGameCreated(false);
     }
   return (
-    <div>
+    <div className='gameABM'>
     <div className='new-game-controls'>
     <h2>Creación de Videojuego</h2>
     <div className='new-game-control'>
@@ -113,6 +144,18 @@ const CreateGame = () => {
          value={price}
           />
     </div>
+    <div className='new-game-control' onDrop={handleDrop} onDragOver={(e) => e.preventDefault()}>
+                    {imagePreview ? (
+                        <div className='image-preview' style={{ backgroundImage: `url(${imagePreview})` }}>
+                            <h3 className='game-title'>{title || "Título del juego"}</h3>
+                            <h3 className='game-genre'>{genre || "Genero del juego"}</h3>
+                            <h3 className='game-price'>{price || "Precio del juego"}</h3>
+                        </div>
+                    ) : (
+                        <p>Arrastra una imagen aquí o selecciona un archivo</p>
+                    )}
+                    <input type="file" accept="image/*" onChange={handleImageChange} />
+                </div>
     <div className='new-game-actions'>
         <button onClick={ResetImputHandler} className='cancel-btn'>Cancelar</button>
         <button disabled={!formValid} onClick={addGameHandler} className='accept-btn'>Agregar</button>

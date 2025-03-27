@@ -9,6 +9,7 @@ const Games = memo(({games, genreSelected}) => {
             title={game.title}
             genre={game.genre}
             price={game.price}
+            image={game.image}
         />
     ));
 

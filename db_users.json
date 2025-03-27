@@ -23,18 +23,7 @@
       "email": "",
       "role": "client",
       "status": "active",
-      "cart": [
-        {
-          "title": "Red Dead Redemption 2",
-          "price": 70,
-          "genre": "Aventura"
-        },
-        {
-          "title": "Super Mario 64",
-          "price": 40,
-          "genre": "Plataformas"
-        }
-      ]
+      "cart": []
     },
     {
       "id": "4",
